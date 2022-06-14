@@ -8,6 +8,9 @@ exports.config = {
       smartWait: 5000
     }
   },
+  include: {
+    calculatorPage: './pages/calculator-page.js'
+  },
   bootstrap: null,
   mocha: {},
   plugins: {
