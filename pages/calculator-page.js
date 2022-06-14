@@ -2,17 +2,26 @@ const { I } = inject();
 
 module.exports = {
     fields: {
-        num2Button: "//button[text() = '2']",
-        num5Button: "//button[text() = '5']",
+        numButton: (num) => `//button[text() = '${num}']`,
         plusButton: "//button[text() = '+']",
         equalButton: "//button[text() = '=']",
         resultDisplay: "//div[contains(@class, 'component-display')]"
     },
 
-    add() {
-        I.click(this.fields.num2Button);
+    add(num1, num2) {
+        const num1Digits = String(num1).split("");
+        const num2Digits = String(num2).split("");
+
+        num1Digits.forEach(digit => {
+            I.click(this.fields.numButton(digit));
+        });
+        
         I.click(this.fields.plusButton);
-        I.click(this.fields.num5Button);
+
+        num2Digits.forEach(digit => {
+            I.click(this.fields.numButton(digit));
+        });
+        
         I.click(this.fields.equalButton);
     },
 
@@ -22,8 +31,6 @@ module.exports = {
 
     isLoaded() {
         I.amOnPage('/');
-        I.seeElement(this.fields.num2Button);
-        I.seeElement(this.fields.num5Button);
         I.seeElement(this.fields.plusButton);
         I.seeElement(this.fields.equalButton);
     }

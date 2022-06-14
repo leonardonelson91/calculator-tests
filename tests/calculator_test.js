@@ -7,8 +7,8 @@ Before(() => {
     calculatorPage.isLoaded();
 });
 
-Scenario('Add 2 numbers', async ({ I }) => {
-    calculatorPage.add();
+Scenario('Add 2 numbers', async () => {
+    calculatorPage.add(10, 20);
     const result = await calculatorPage.getOperationResult();
-    assert.equal(7, result);
+    assert.equal(30, result);
 });

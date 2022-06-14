@@ -5,12 +5,11 @@ Given('I am on the calculator page', () => {
   calculatorPage.isLoaded();
 });
 
-When('I add two numbers', () => {
-  calculatorPage.add();
+When('I add {int} and {int}', (num1, num2) => {
+  calculatorPage.add(num1, num2);
 });
 
-Then('I must see the result of the operation', async () => {
-  calculatorPage.add();
-  const result = await calculatorPage.getOperationResult();
-  assert.equal(7, result);
+Then('I must see {int} as the result', async (result) => {
+  const actualResult = await calculatorPage.getOperationResult();
+  assert.equal(actualResult, result);
 });

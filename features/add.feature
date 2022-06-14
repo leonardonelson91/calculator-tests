@@ -4,5 +4,5 @@ Feature: Add numbers
 
     Scenario: Add two numbers
         Given I am on the calculator page
-        When I add two numbers
-        Then I must see the result of the operation
+        When I add 10 and 20
+        Then I must see 30 as the result
