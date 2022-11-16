@@ -3,7 +3,7 @@ const { I } = inject();
 module.exports = {
     fields: {
         numButton: (num) => `//button[text() = '${num}']`,
-        plusButton: "//button[text() = '+']",
+        plusButton: "//div[text() = '+']",
         equalButton: "//button[text() = '=']",
         resultDisplay: "//div[contains(@class, 'component-display')]"
     },
